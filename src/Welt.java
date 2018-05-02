@@ -1,3 +1,6 @@
+import java.util.concurrent.ThreadLocalRandom;
+
+
 public class Welt {
 
 	private int[][] matrix;
@@ -27,11 +30,24 @@ public class Welt {
 	}
 	
 	public void spawnObst(){
-		
+		int randomTime = ThreadLocalRandom.current().nextInt(5, 25);
+		try {
+			Thread.sleep((randomTime*1000));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		obst.spawn();
 	}
 	
 	public void spawnPowerup(){
-		
+		for(int i = 0; i < 3; i++) {
+			try {
+				Thread.sleep(8000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			powerups[i].spawn();
+		}
 	}
 	
 	public int getKennung(){
